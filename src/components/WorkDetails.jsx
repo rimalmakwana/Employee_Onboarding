@@ -18,6 +18,10 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
 
     if (!formData.experience.trim()) {
       newErrors.experience = "This field is required";
+    } else if (Number(formData.experience) > 40) {
+      newErrors.experience = "Experience cannot exceed 40 years";
+    } else if (Number(formData.experience) < 0) {
+      newErrors.experience = "Experience cannot be negative";
     }
 
     return newErrors;
@@ -100,6 +104,8 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           value={formData.experience}
           onChange={handleChange}
           className={errors.experience ? "error-input" : ""}
+          min="0"
+          max="40"
         />
         {errors.experience && <p className="error">{errors.experience}</p>}
       </div>

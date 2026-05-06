@@ -40,7 +40,7 @@ const StepIndicator = ({ currentStep }) => {
           <div key={step.number} className="step-wrapper">
 
             {/* Circle and label */}
-            <div>
+            <div className="step-content">
               <div className={circleClass}>
                 {isCompleted ? "✓" : step.number}
               </div>

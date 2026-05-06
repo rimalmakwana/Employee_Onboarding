@@ -17,6 +17,8 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
     if (!formData.pincode.trim()) {
       newErrors.pincode = "This field is required";
+    } else if (formData.pincode.trim().length !== 6) {
+      newErrors.pincode = "Pincode must be 6 digits";
     }
 
     return newErrors;
@@ -27,6 +29,18 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
     formData.city.trim() !== "" &&
     formData.state.trim() !== "" &&
     formData.pincode.trim() !== "";
+
+  // Special handler for pincode — only allows numbers and max 6 digits
+  const handlePincodeChange = (e) => {
+    // Remove anything that is NOT a number
+    const onlyNumbers = e.target.value.replace(/[^0-9]/g, "");
+
+    // Keep only the first 6 digits
+    const limitedTo6 = onlyNumbers.slice(0, 6);
+
+    // Call parent's handleChange with the cleaned value
+    handleChange({ target: { name: "pincode", value: limitedTo6 } });
+  };
 
   // When Next is clicked
   const handleNext = () => {
@@ -80,11 +94,12 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
         <div className="form-group">
           <label>Pincode <span>*</span></label>
           <input
-            type="text"
+            type="number"
             name="pincode"
             placeholder="e.g. 560001"
+            maxLength="6"
             value={formData.pincode}
-            onChange={handleChange}
+            onChange={handlePincodeChange}
             className={errors.pincode ? "error-input" : ""}
           />
           {errors.pincode && <p className="error">{errors.pincode}</p>}
