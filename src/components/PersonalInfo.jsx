@@ -23,6 +23,15 @@ function PersonalInfo({ formData, handleChange, onNext }) {
     return newErrors;
   };
 
+  // Special handler for phone — only allows numbers, + and spaces
+  const handlePhoneChange = (e) => {
+    // Remove anything that is NOT a number, +, or space
+    const onlyNumbers = e.target.value.replace(/[^0-9+ ]/g, "");
+
+    // Call parent's handleChange with the cleaned value
+    handleChange({ target: { name: "phone", value: onlyNumbers } });
+  };
+
   // Handle Next button
   const handleNext = () => {
     const validationErrors = validate();
@@ -78,11 +87,11 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           Phone Number <span>*</span>
         </label>
         <input
-          type="number"
+          type="tel"
           name="phone"
           placeholder="+91 98765 43210"
           value={formData.phone}
-          onChange={handleChange}
+          onChange={handlePhoneChange}
           className={errors.phone ? "error-input" : ""}
         />
         {errors.phone && <p className="error">{errors.phone}</p>}
