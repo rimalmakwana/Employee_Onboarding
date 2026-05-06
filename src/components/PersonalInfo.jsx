@@ -97,7 +97,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         {errors.phone && <p className="error">{errors.phone}</p>}
       </div>
 
-      <div className="button-container">
+      <div className="button-container" style={{ justifyContent: "flex-end" }}>
         <button className="next-btn" onClick={handleNext}>
           Next →
         </button>
