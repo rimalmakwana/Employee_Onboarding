@@ -23,7 +23,13 @@ function PersonalInfo({ formData, handleChange, onNext }) {
     return newErrors;
   };
 
-  // Special handler for phone — only allows numbers, + and spaces
+  // Check if all fields are filled
+  const isFormFilled =
+    formData.name.trim() !== "" &&
+    formData.email.trim() !== "" &&
+    formData.phone.trim() !== "";
+
+  // middle function for phone — only allows numbers, + and spaces
   const handlePhoneChange = (e) => {
     // Remove anything that is NOT a number, +, or space
     const onlyNumbers = e.target.value.replace(/[^0-9+ ]/g, "");
@@ -98,7 +104,11 @@ function PersonalInfo({ formData, handleChange, onNext }) {
       </div>
 
       <div className="button-container" style={{ justifyContent: "flex-end" }}>
-        <button className="next-btn" onClick={handleNext}>
+        <button
+          className="next-btn"
+          onClick={handleNext}
+          disabled={!isFormFilled}
+        >
           Next →
         </button>
       </div>
