@@ -1,4 +1,6 @@
 import { useState } from "react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 // formData and handleChange come from parent (Onboarding.jsx)
 function PersonalInfo({ formData, handleChange, onNext }) {
@@ -18,7 +20,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
       newErrors.email = "Please enter a valid email address";
     }
 
-    if (!formData.phone.trim()) {
+    if (!formData.phone) {
       newErrors.phone = "This field is required";
     }
 
@@ -29,16 +31,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
   const isFormFilled =
     formData.name.trim() !== "" &&
     formData.email.trim() !== "" &&
-    formData.phone.trim() !== "";
-
-  // middle function for phone — only allows numbers, + and spaces
-  const handlePhoneChange = (e) => {
-    // Remove anything that is NOT a number, +, or space
-    const onlyNumbers = e.target.value.replace(/[^0-9+ ]/g, "");
-
-    // Call parent's handleChange with the cleaned value
-    handleChange({ target: { name: "phone", value: onlyNumbers } });
-  };
+    formData.phone;
 
   // Handle Next button
   const handleNext = () => {
@@ -89,19 +82,24 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         {errors.email && <p className="error">{errors.email}</p>}
       </div>
 
-      {/* Phone */}
+      {/* Phone (Updated) */}
       <div className="form-group">
         <label>
           Phone Number <span>*</span>
         </label>
-        <input
-          type="tel"
-          name="phone"
-          placeholder="+91 98765 43210"
+
+        <PhoneInput
+          placeholder="Enter phone number"
+          defaultCountry="IN"
           value={formData.phone}
-          onChange={handlePhoneChange}
+          onChange={(value) =>
+            handleChange({
+              target: { name: "phone", value: value || "" },
+            })
+          }
           className={errors.phone ? "error-input" : ""}
         />
+
         {errors.phone && <p className="error">{errors.phone}</p>}
       </div>
 
