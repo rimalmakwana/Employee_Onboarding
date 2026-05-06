@@ -23,6 +23,12 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
     return newErrors;
   };
 
+  // Check if all fields are filled
+  const isFormFilled =
+    formData.department !== "" &&
+    formData.role !== "" &&
+    formData.experience.trim() !== "";
+
   // Handle Next button
   const handleNext = () => {
     const validationErrors = validate();
@@ -103,7 +109,11 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
         <button className="back-btn" onClick={onBack}>
           ← Back
         </button>
-        <button className="next-btn" onClick={handleNext}>
+        <button
+          className="next-btn"
+          onClick={handleNext}
+          disabled={!isFormFilled}
+        >
           Next →
         </button>
       </div>

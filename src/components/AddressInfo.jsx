@@ -22,6 +22,12 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
     return newErrors;
   };
 
+  // Check if all fields are filled
+  const isFormFilled =
+    formData.city.trim() !== "" &&
+    formData.state.trim() !== "" &&
+    formData.pincode.trim() !== "";
+
   // When Next is clicked
   const handleNext = () => {
     const validationErrors = validate();
@@ -89,7 +95,13 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
       {/* Back and Next buttons */}
       <div className="button-container">
         <button className="back-btn" onClick={onBack}>← Back</button>
-        <button className="next-btn" onClick={handleNext}>Next →</button>
+        <button
+          className="next-btn"
+          onClick={handleNext}
+          disabled={!isFormFilled}
+        >
+          Next →
+        </button>
       </div>
     </div>
   );
