@@ -11,7 +11,7 @@ const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 if (!googleMapsApiKey) {
   throw new Error(
     "[envConfig] VITE_GOOGLE_MAPS_API_KEY is not defined.\n" +
-      "Add it to your .env file:  VITE_GOOGLE_MAPS_API_KEY=your_key_here"
+    "Add it to your .env file:  VITE_GOOGLE_MAPS_API_KEY=your_key_here"
   );
 }
 
