@@ -64,48 +64,50 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
     });
   };
 
-  // Fetch location from Google Maps
-  const fetchLocation = async () => {
-
-    // Combine address
-    const address = `
-      ${formData.city}
-      ${formData.state}
-      ${formData.pincode}
-    `;
-
-    // Don't search if empty
-    if (!address.trim()) return;
-
-    try {
-
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
-      );
-
-      const data = await response.json();
-
-      // If result found
-      if (data.results.length > 0) {
-
-        const coordinates =
-          data.results[0].geometry.location;
-
-        setLocation({
-          lat: coordinates.lat,
-          lng: coordinates.lng,
-        });
-      }
-
-    } catch (error) {
-
-      console.log("Location fetch error:", error);
-
-    }
-  };
-
   // Automatically fetch location when inputs change
   useEffect(() => {
+
+    // Fetch location from Google Maps
+    const fetchLocation = async () => {
+
+      // Combine address
+      const address = `
+        ${formData.city}
+        ${formData.state}
+        ${formData.pincode}
+      `;
+
+      // Don't search if empty
+      if (!address.trim()) return;
+
+      try {
+
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
+        );
+
+        const data = await response.json();
+
+        // If result found
+        if (data?.results?.length > 0) {
+
+          const coordinates =
+            data.results[0]?.geometry?.location;
+
+          if (coordinates) {
+            setLocation({
+              lat: coordinates.lat,
+              lng: coordinates.lng,
+            });
+          }
+        }
+
+      } catch (error) {
+
+        console.log("Location fetch error:", error);
+
+      }
+    };
 
     // Delay API call
     const timer = setTimeout(() => {
