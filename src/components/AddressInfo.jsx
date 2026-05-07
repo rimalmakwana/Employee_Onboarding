@@ -18,7 +18,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
   // Load Google Maps
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyD4_jwDxzh63O8Q96lztzjJckHAo2LWt-Q",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
   // Check if fields are filled
@@ -80,7 +80,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
     try {
 
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyD4_jwDxzh63O8Q96lztzjJckHAo2LWt-Q`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
       );
 
       const data = await response.json();
