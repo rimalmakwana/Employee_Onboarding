@@ -1,3 +1,5 @@
+import { ArrowLeft ,Check } from "lucide-react";
+
 function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
   return (
     <div>
@@ -69,8 +71,8 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
 
       {/* Back and Submit buttons */}
       <div className="button-container">
-        <button className="back-btn" onClick={onBack}>← Back</button>
-        <button className="submit-btn" onClick={onSubmit}>Submit ✓</button>
+        <button className="back-btn" onClick={onBack}><ArrowLeft size={18} /> Back</button>
+        <button className="submit-btn" onClick={onSubmit}>Submit <Check /></button>
       </div>
     </div>
   );

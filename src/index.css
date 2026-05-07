@@ -176,6 +176,10 @@ input:-webkit-autofill:active {
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .back-btn {
@@ -187,6 +191,10 @@ input:-webkit-autofill:active {
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .back-btn:hover {
@@ -295,6 +303,10 @@ input:-webkit-autofill:active {
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .submit-btn:hover {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { ArrowRight } from "lucide-react";
 
 // formData and handleChange come from parent (Onboarding.jsx)
 function PersonalInfo({ formData, handleChange, onNext }) {
@@ -130,7 +131,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           onClick={handleNext}
           disabled={!isFormFilled}
         >
-          Next →
+          Next <ArrowRight size={18} />
         </button>
       </div>
     </div>

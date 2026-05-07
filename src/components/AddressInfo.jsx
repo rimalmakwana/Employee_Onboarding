@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useAddressGeocoding } from "../hooks/useAddressGeocoding";
 
 function AddressInfo({ formData, handleChange, onNext, onBack }) {
@@ -181,7 +182,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
           className="back-btn"
           onClick={onBack}
         >
-          ← Back
+          <ArrowLeft size={18} /> Back
         </button>
 
         <button
@@ -189,7 +190,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
           onClick={handleNext}
           disabled={!isFormFilled}
         >
-          Next →
+          Next <ArrowRight size={18} />
         </button>
 
       </div>
