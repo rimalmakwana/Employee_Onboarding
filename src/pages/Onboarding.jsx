@@ -78,8 +78,8 @@ const Onboarding = () => {
   // If form is submitted, show success screen
   if (isSubmitted) {
     return (
-      <div className="container">
-        <div className="card">
+      <div className="container success-page-container">
+        <div className="card success-card">
           <SuccessScreen
             name={formData.name}
             email={formData.email}

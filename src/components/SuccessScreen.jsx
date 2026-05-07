@@ -16,7 +16,7 @@ function SuccessScreen({ name, email, onSubmitAnother }) {
       </p>
 
       {/* This button resets everything back to step 1 */}
-      <button className="next-btn" onClick={onSubmitAnother}>
+      <button className="submit-another-btn" onClick={onSubmitAnother}>
         Submit Another
       </button>
 

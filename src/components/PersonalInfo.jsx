@@ -27,6 +27,26 @@ function PersonalInfo({ formData, handleChange, onNext }) {
     return newErrors;
   };
 
+  // Validate email on blur
+  const handleEmailBlur = () => {
+    let emailError = "";
+    if (!formData.email.trim()) {
+      emailError = "This field is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      emailError = "Please enter a valid email address";
+    }
+
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      if (emailError) {
+        newErrors.email = emailError;
+      } else {
+        delete newErrors.email;
+      }
+      return newErrors;
+    });
+  };
+
   // Check if all fields are filled
   const isFormFilled =
     formData.name.trim() !== "" &&
@@ -57,7 +77,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         </label>
         <input
           type="text"
-          name="name"
+          name="name" 
           placeholder="e.g. Priya Sharma"
           value={formData.name}
           onChange={handleChange}
@@ -77,6 +97,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           placeholder="you@company.com"
           value={formData.email}
           onChange={handleChange}
+          onBlur={handleEmailBlur}
           className={errors.email ? "error-input" : ""}
         />
         {errors.email && <p className="error">{errors.email}</p>}
