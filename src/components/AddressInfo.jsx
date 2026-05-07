@@ -1,25 +1,20 @@
-import { useState, useEffect } from "react";
-
-import {
-  GoogleMap,
-  Marker,
-  useLoadScript,
-} from "@react-google-maps/api";
+import { useState } from "react";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import { useAddressGeocoding } from "../hooks/useAddressGeocoding";
 
 function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
   const [errors, setErrors] = useState({});
 
-  // Store latitude & longitude
-  const [location, setLocation] = useState({
-    lat: 12.9716,
-    lng: 77.5946,
-  });
+  // Combine address for hook
+  const address = `
+    ${formData.city}
+    ${formData.state}
+    ${formData.pincode}
+  `;
 
-  // Load Google Maps
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-  });
+  // Fetch location and map script using custom hook
+  const { location, isLoaded } = useAddressGeocoding(address);
 
   // Check if fields are filled
   const validate = () => {
@@ -63,67 +58,6 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
       },
     });
   };
-
-  // Automatically fetch location when inputs change
-  useEffect(() => {
-
-    // Fetch location from Google Maps
-    const fetchLocation = async () => {
-
-      // Combine address
-      const address = `
-        ${formData.city}
-        ${formData.state}
-        ${formData.pincode}
-      `;
-
-      // Don't search if empty
-      if (!address.trim()) return;
-
-      try {
-
-        const response = await fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
-        );
-
-        const data = await response.json();
-
-        // If result found
-        if (data?.results?.length > 0) {
-
-          const coordinates =
-            data.results[0]?.geometry?.location;
-
-          if (coordinates) {
-            setLocation({
-              lat: coordinates.lat,
-              lng: coordinates.lng,
-            });
-          }
-        }
-
-      } catch (error) {
-
-        console.log("Location fetch error:", error);
-
-      }
-    };
-
-    // Delay API call
-    const timer = setTimeout(() => {
-
-      fetchLocation();
-
-    }, 1000);
-
-    // Cleanup
-    return () => clearTimeout(timer);
-
-  }, [
-    formData.city,
-    formData.state,
-    formData.pincode,
-  ]);
 
   // When Next is clicked
   const handleNext = () => {
