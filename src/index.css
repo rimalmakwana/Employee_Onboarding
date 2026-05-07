@@ -110,12 +110,12 @@ input:not(:placeholder-shown) {
 
 /* Ensure browser autofill matches this background color */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #e8f0fe inset !important;
-    -webkit-text-fill-color: black !important;
-    transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0 1000px #e8f0fe inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .error {
@@ -155,8 +155,8 @@ input:-webkit-autofill:active {
 }
 
 .PhoneInput input:-webkit-autofill,
-.PhoneInput input:-webkit-autofill:hover, 
-.PhoneInput input:-webkit-autofill:focus, 
+.PhoneInput input:-webkit-autofill:hover,
+.PhoneInput input:-webkit-autofill:focus,
 .PhoneInput input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
 }
@@ -179,17 +179,18 @@ input:-webkit-autofill:active {
 }
 
 .back-btn {
-  background: #f0f0f0;
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  background: #f3f4f6;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  padding: 12px 24px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .back-btn:hover {
-  background: #e0e0e0;
+  background: #e5e7eb;
 }
 
 .next-btn:hover {
@@ -230,9 +231,10 @@ input:-webkit-autofill:active {
 
 /* Review page - each section box */
 .review-section {
-  background: #f9f9f9;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
   border-radius: 8px;
-  padding: 15px;
+  padding: 15px 20px;
   margin-bottom: 15px;
 }
 
@@ -241,10 +243,11 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 12px;
   color: gray;
   font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 /* Edit button */
@@ -254,24 +257,25 @@ input:-webkit-autofill:active {
   color: #5b4df5;
   cursor: pointer;
   font-size: 13px;
+  font-weight: 500;
 }
 
 /* Each row in review (label + value) */
 .review-row {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
+  padding: 6px 0;
   font-size: 14px;
 }
 
 .review-key {
-  color: gray;
+  color: #666;
 }
 
 .review-value {
-  color: #333;
+  color: #111;
   font-weight: 500;
-  text-align: left;
+  text-align: right;
   max-width: 65%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -283,17 +287,18 @@ input:-webkit-autofill:active {
 
 /* Green Submit button */
 .submit-btn {
-  background: #22c55e;
+  background: #16a34a;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .submit-btn:hover {
-  background: #16a34a;
+  background: #15803d;
 }
 
 /* Success Screen */
