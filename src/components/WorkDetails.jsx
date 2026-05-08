@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { ArrowLeft, ArrowRight } from "lucide-react";
 // formData and handleChange come from parent (Onboarding.jsx)
 function WorkDetails({ formData, handleChange, onNext, onBack }) {
   const [errors, setErrors] = useState({});
@@ -113,14 +113,14 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
       {/* Buttons */}
       <div className="button-container">
         <button className="back-btn" onClick={onBack}>
-          ← Back
+          <ArrowLeft size={18} /> Back
         </button>
         <button
           className="next-btn"
           onClick={handleNext}
           disabled={!isFormFilled}
         >
-          Next →
+          Next <ArrowRight size={18} />
         </button>
       </div>
     </div>
