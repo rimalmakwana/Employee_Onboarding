@@ -78,7 +78,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         </label>
         <input
           type="text"
-          name="name" 
+          name="name"
           placeholder="e.g. Priya Sharma"
           value={formData.name}
           onChange={handleChange}
@@ -125,9 +125,12 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         {errors.phone && <p className="error">{errors.phone}</p>}
       </div>
 
-      <div className="flex justify-end mt-[10px]" >
+      <div className="flex justify-end mt-[10px]">
         <button
-          className="next-btn"
+          className="bg-[#5b4df5] text-white py-[10px] px-5 rounded-[8px] cursor-pointer text-[14px] 
+          flex items-center justify-center gap-2"
+          onClick={handleNext}
+          disabled={!isFormFilled}
           onClick={handleNext}
           disabled={!isFormFilled}
         >

@@ -73,12 +73,12 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
   return (
     <div>
-      <h2>Address Information</h2>
+      <h2 className="text-[25px] font-bold mb-4">Address Information</h2>
 
-      <p className="form-subtitle">Where are you based?</p>
+      <p className="text-gray-500 mb-5">Where are you based?</p>
 
       {/* City */}
-      <div className="form-group">
+      <div className="">
         <label>
           City <span>*</span>
         </label>
@@ -96,9 +96,9 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
       </div>
 
       {/* State and Pincode side by side */}
-      <div className="two-columns">
+      <div className="flex gap-[10px]">
         {/* State */}
-        <div className="form-group">
+        <div className="flex-1">
           <label>
             State <span>*</span>
           </label>
@@ -112,9 +112,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
             className={errors.state ? "error-input" : ""}
           />
 
-          {errors?.state && (
-  <p className="error">{errors.state}</p>
-)}
+          {errors?.state && <p className="error">{errors.state}</p>}
         </div>
 
         {/* Pincode */}
@@ -133,14 +131,12 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
             className={errors.pincode ? "error-input" : ""}
           />
 
-          {errors?.pincode && (
-  <p className="error">{errors.pincode}</p>
-)}
+          {errors?.pincode && <p className="error">{errors.pincode}</p>}
         </div>
       </div>
 
       {/* Render the Map */}
-      <div className="map-wrapper">
+      <div className="w-full h-[300px] mt-5 rounded-[12px] overflow-hidden">
         <GoogleMap
           zoom={12}
           center={location}
@@ -151,13 +147,18 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
       </div>
 
       {/* Back and Next buttons */}
-      <div className="button-container">
-        <button className="back-btn" onClick={onBack}>
+      <div className="flex justify-between mt-[10px]">
+        <button
+          className="bg-gray-100 text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] 
+        cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2"
+          onClick={onBack}
+        >
           <ArrowLeft size={18} /> Back
         </button>
 
         <button
-          className="next-btn"
+          className="bg-[#5b4df5] text-white py-[10px] px-5 rounded-[8px] cursor-pointer text-[14px] 
+          flex items-center justify-center gap-2"
           onClick={handleNext}
           disabled={!isFormFilled}
         >
