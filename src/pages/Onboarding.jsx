@@ -78,7 +78,7 @@ const Onboarding = () => {
   // If form is submitted, show success screen
   if (isSubmitted) {
     return (
-      <div className="container success-page-container">
+      <div className="container max-w-[500px] mx-auto mt-[80px]">
         <div className="bg-white p-[25px] rounded-[10px] shadow-md py-10 px-[30px]">
           <SuccessScreen
             name={formData.name}

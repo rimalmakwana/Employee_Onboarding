@@ -1,78 +1,99 @@
-import { ArrowLeft ,Check } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 
 function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
+
+  // All sections data
+  const sections = [
+    {
+      title: "PERSONAL INFO",
+      step: 1,
+      fields: [
+        { label: "Full Name", value: formData.name },
+        { label: "Email", value: formData.email },
+        { label: "Phone", value: formData.phone },
+      ],
+    },
+
+    {
+      title: "WORK DETAILS",
+      step: 2,
+      fields: [
+        { label: "Department", value: formData.department },
+        { label: "Role", value: formData.role },
+        { label: "Experience", value: `${formData.experience} yrs` },
+      ],
+    },
+
+    {
+      title: "ADDRESS",
+      step: 3,
+      fields: [
+        { label: "City", value: formData.city },
+        { label: "State", value: formData.state },
+        { label: "Pincode", value: formData.pincode },
+      ],
+    },
+  ];
+
   return (
     <div>
-      <h2>Review &amp; Submit</h2>
-      <p className="form-subtitle">Confirm your details before submitting</p>
+      <h2 className="text-[25px] font-bold mb-4">
+        Review & Submit
+      </h2>
 
-      {/* Personal Info Section */}
-      <div className="review-section">
-        <div className="review-header">
-          <span>PERSONAL INFO</span>
-          {/* Edit button goes back to step 1 */}
-          <button className="edit-btn" onClick={() => goToStep(1)}>Edit</button>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Full Name</span>
-          <span className="review-value">{formData.name}</span>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Email</span>
-          <span className="review-value">{formData.email}</span>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Phone</span>
-          <span className="review-value">{formData.phone}</span>
-        </div>
-      </div>
+      <p className="text-gray-500 mb-5">
+        Confirm your details before submitting
+      </p>
 
-      {/* Work Details Section */}
-      <div className="review-section">
-        <div className="review-header">
-          <span>WORK DETAILS</span>
-          {/* Edit button goes back to step 2 */}
-          <button className="edit-btn" onClick={() => goToStep(2)}>Edit</button>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Department</span>
-          <span className="review-value">{formData.department}</span>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Role</span>
-          <span className="review-value">{formData.role}</span>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Experience</span>
-          <span className="review-value">{formData.experience} yrs</span>
-        </div>
-      </div>
+      {/* Dynamic Sections */}
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          className="bg-[#fafafa] border border-[#ebebeb] rounded-[8px] py-[15px] px-5 mb-[15px]"
+        >
+          {/* Header */}
+          <div className="flex justify-between items-center mb-[15px] text-[12px] text-gray-500 font-bold tracking-[0.5px]">
+            <span>{section.title}</span>
 
-      {/* Address Section */}
-      <div className="review-section">
-        <div className="review-header">
-          <span>ADDRESS</span>
-          {/* Edit button goes back to step 3 */}
-          <button className="edit-btn" onClick={() => goToStep(3)}>Edit</button>
-        </div>
-        <div className="review-row">
-          <span className="review-key">City</span>
-          <span className="review-value">{formData.city}</span>
-        </div>
-        <div className="review-row">
-          <span className="review-key">State</span>
-          <span className="review-value">{formData.state}</span>
-        </div>
-        <div className="review-row">
-          <span className="review-key">Pincode</span>
-          <span className="review-value">{formData.pincode}</span>
-        </div>
-      </div>
+            <button
+              className="bg-none border-none text-[#5b4df5] cursor-pointer text-[13px] font-medium"
+              onClick={() => goToStep(section.step)}
+            >
+              Edit
+            </button>
+          </div>
 
-      {/* Back and Submit buttons */}
-      <div className="button-container">
-        <button className="back-btn" onClick={onBack}><ArrowLeft size={18} /> Back</button>
-        <button className="submit-btn" onClick={onSubmit}>Submit <Check /></button>
+          {/* Fields */}
+          {section.fields.map((field, i) => (
+            <div
+              key={i}
+              className="flex justify-between py-[6px] text-[14px]"
+            >
+              <span className="text-gray-500">
+                {field.label}
+              </span>
+
+              <span className="text-[#111] font-medium text-right max-w-[65%] overflow-hidden text-ellipsis break-words line-clamp-2">
+                {field.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      ))}
+
+      {/* Buttons */}
+      <div className="flex justify-between mt-[10px]">
+        <button
+          className="bg-gray-100 text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2"
+          onClick={onBack}
+        >
+          <ArrowLeft size={18} />
+          Back
+        </button>
+
+        <button className="submit-btn" onClick={onSubmit}>
+          Submit <Check />
+        </button>
       </div>
     </div>
   );

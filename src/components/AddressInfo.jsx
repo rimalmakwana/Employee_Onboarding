@@ -140,7 +140,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
         <GoogleMap
           zoom={12}
           center={location}
-          mapContainerClassName="google-map-container"
+          mapContainerClassName="w-full h-full"
         >
           <Marker position={location} />
         </GoogleMap>
