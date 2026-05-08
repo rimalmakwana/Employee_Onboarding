@@ -1,30 +1,30 @@
 /* The row that holds all steps */
-.step-container {
+/* .step-container {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-}
+} */
 
 /* Each step wrapper (circle + label + line) */
-.step-wrapper {
+/* .step-wrapper {
   display: flex;
   align-items: flex-start;
   flex: 1;
-}
+} */
 
-.step-wrapper:last-child {
+/* .step-wrapper:last-child {
   flex: 0 0 auto;
-}
+} */
 
-.step-content {
+/* .step-content {
   width: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 /* Circle */
-.circle {
+/* .circle {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -35,42 +35,42 @@
   justify-content: center;
   margin: 0 auto 5px auto;
   font-size: 14px;
-}
+} */
 
 /* Green circle — step is done */
-.circle.completed {
+/* .circle.completed {
   background: #22c55e;
   color: white;
-}
+} */
 
 /* Purple circle — step is active now */
-.circle.current {
+/* .circle.current {
   background: #5b4df5;
   color: white;
-}
+} */
 
 /* Label below circle */
-.step-label {
+/* .step-label {
   text-align: center;
   font-size: 12px;
   color: gray;
-}
+} */
 
 /* Purple label for active step */
-.step-label.active-label {
+/* .step-label.active-label {
   color: #5b4df5;
   font-weight: bold;
-}
+} */
 
 /* Line between steps */
-.line {
+/* .line {
   flex: 1;
   height: 2px;
   background: #e2e2e2;
   margin: 16px 0 0 0;
-}
+} */
 
 /* Purple line — step is done */
-.line.done-line {
+/* .line.done-line {
   background: #5b4df5;
-}
+} */

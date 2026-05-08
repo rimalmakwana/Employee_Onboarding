@@ -10,52 +10,77 @@ const steps = [
 
 const StepIndicator = ({ currentStep }) => {
   return (
-    <div className="step-container">
-
+    <div className="flex items-center mb-[30px]">
       {steps.map((step, index) => {
-
-        // Is this step already completed?
         const isCompleted = step.number < currentStep;
-
-        // Is this step the current active step?
         const isActive = step.number === currentStep;
-
-        // Is this step the last one? (no line after it)
         const isLastStep = index === steps.length - 1;
 
-        // Decide circle class
-        let circleClass = "circle";
-        if (isCompleted) circleClass = "circle completed";
-        if (isActive)    circleClass = "circle current";
-
-        // Decide label class
-        let labelClass = "step-label";
-        if (isActive) labelClass = "step-label active-label";
-
-        // Decide line class
-        let lineClass = "line";
-        if (isCompleted) lineClass = "line done-line";
-
         return (
-          <div key={step.number} className="step-wrapper">
-
-            {/* Circle and label */}
-            <div className="step-content">
-              <div className={circleClass}>
+          <div
+            key={step.number}
+            className={`flex items-start ${
+              isLastStep ? "flex-none" : "flex-1"
+            }`}
+          >
+            {/* Circle + Label */}
+            <div className="w-[90px] flex flex-col items-center">
+              <div
+                className={`
+                  w-[35px]
+                  h-[35px]
+                  rounded-full
+                  flex
+                  items-center
+                  justify-center
+                  mb-[5px]
+                  text-[14px]
+                  ${
+                    isCompleted
+                      ? "bg-green-500 text-white"
+                      : isActive
+                      ? "bg-[#5b4df5] text-white"
+                      : "bg-[#f0f0f0] text-[#777]"
+                  }
+                `}
+              >
                 {isCompleted ? "✓" : step.number}
               </div>
-              <p className={labelClass}>{step.label}</p>
+
+              <p
+                className={`
+                  text-center
+                  text-[12px]
+                  ${
+                    isActive
+                      ? "text-[#5b4df5] font-bold"
+                      : "text-gray-500"
+                  }
+                `}
+              >
+                {step.label}
+              </p>
             </div>
 
-            {/* Line between steps — don't show after last step */}
-            {!isLastStep && <div className={lineClass}></div>}
-
+            {/* Line */}
+            {!isLastStep && (
+              <div
+                className={`
+                  flex-1
+                  h-[2px]
+                  mt-[16px]
+                  ${
+                    isCompleted
+                      ? "bg-[#5b4df5]"
+                      : "bg-[#e2e2e2]"
+                  }
+                `}
+              ></div>
+            )}
           </div>
         );
       })}
-
     </div>
   );
 };
-
 export default StepIndicator;

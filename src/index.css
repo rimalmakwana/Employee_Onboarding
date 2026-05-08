@@ -6,28 +6,28 @@ body {
   margin: 0;
 }
 
-.container {
+/* .container {
   max-width: 700px;
   margin: 40px auto;
   padding: 20px;
-}
+} */
 
-.title {
+/* .title {
   margin-bottom: 5px;
-}
+} */
 
-.subtitle {
+/* .subtitle {
   color: gray;
   margin-bottom: 20px;
-}
+} */
 
 /* Step Indicator */
-.step-container {
+/* .step-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
-}
+} */
 
 .step {
   text-align: center;
@@ -63,12 +63,12 @@ body {
 }
 
 /* Card */
-.card {
+/* .card {
   background: white;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
+} */
 
 /* Form */
 .form-subtitle {
@@ -321,9 +321,9 @@ input:-webkit-autofill:active {
   margin: 80px auto;
 }
 
-.success-card {
+/* .success-card {
   padding: 40px 30px;
-}
+} */
 
 .success-container {
   text-align: center;
