@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import { useDebounce } from "./useDebounce";
 import { GOOGLE_MAPS_API_KEY } from "../config/envConfig";
+import { GOOGLE_GEOCODE_API } from "../lib/endpoints";
 
 export function useAddressGeocoding(address) {
   const [location, setLocation] = useState({
@@ -24,8 +25,8 @@ export function useAddressGeocoding(address) {
 
       try {
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(debouncedAddress)}&key=${GOOGLE_MAPS_API_KEY}`
-        );
+  GOOGLE_GEOCODE_API(debouncedAddress)
+);
 
         const data = await response.json();
 
