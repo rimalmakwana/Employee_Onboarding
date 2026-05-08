@@ -29,13 +29,13 @@ body {
   margin-bottom: 30px;
 } */
 
-.step {
+/* .step {
   text-align: center;
   font-size: 12px;
   color: gray;
-}
+} */
 
-.circle {
+/* .circle {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -45,9 +45,9 @@ body {
   justify-content: center;
   margin: auto;
   margin-bottom: 5px;
-}
+} */
 
-.circle.active {
+/* .circle.active {
   background: #5b4df5;
   color: white;
 }
@@ -60,7 +60,7 @@ body {
   flex: 1;
   height: 2px;
   background: #ddd;
-}
+} */
 
 /* Card */
 /* .card {
@@ -80,14 +80,14 @@ body {
   margin-bottom: 20px;
 } */
 
-label {
+/* label {
   display: block;
   margin-bottom: 5px;
 }
 
 label span {
   color: red;
-}
+} */
 
 input,
 select {
@@ -110,15 +110,7 @@ input:not(:placeholder-shown) {
   background-color: #e8f0fe;
 }
 
-/* Ensure browser autofill matches this background color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #e8f0fe inset !important;
-  -webkit-text-fill-color: black !important;
-  transition: background-color 5000s ease-in-out 0s;
-}
+
 
 .error {
   color: red;
@@ -156,12 +148,7 @@ input:-webkit-autofill:active {
   border: none;
 }
 
-.PhoneInput input:-webkit-autofill,
-.PhoneInput input:-webkit-autofill:hover,
-.PhoneInput input:-webkit-autofill:focus,
-.PhoneInput input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-}
+
 
 /* Buttons */
 /* .button-container {
@@ -199,35 +186,35 @@ input:-webkit-autofill:active {
   gap: 8px;
 } */
 
-.back-btn:hover {
+/* .back-btn:hover {
   background: #e5e7eb;
 }
 
 .next-btn:hover {
   background: #4a3de0;
-}
+} */
 
 /* When button is disabled */
-.next-btn:disabled {
+/* .next-btn:disabled {
   background: #b0aae8;
   cursor: not-allowed;
 }
 
 .error-input {
   border: 1px solid red !important;
-}
+} */
 
 /* Completed step circle (green with checkmark) */
-.circle.completed {
+/* .circle.completed {
   background: #22c55e;
   color: white;
-}
+} */
 
 /* Current active step circle (purple) */
-.circle.current {
+/* .circle.current {
   background: #5b4df5;
   color: white;
-}
+} */
 
 /* Two columns side by side (used in Address Info) */
 /* .two-columns {
@@ -296,7 +283,7 @@ input:-webkit-autofill:active {
 } */
 
 /* Green Submit button */
-.submit-btn {
+/* .submit-btn {
   background: #16a34a;
   color: white;
   border: none;
@@ -309,11 +296,11 @@ input:-webkit-autofill:active {
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
+} */
 
-.submit-btn:hover {
+/* .submit-btn:hover {
   background: #15803d;
-}
+} */
 
 /* Success Screen */
 /* .success-page-container {

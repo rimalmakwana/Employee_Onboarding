@@ -31,6 +31,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
   // Validate email on blur
   const handleEmailBlur = () => {
     let emailError = "";
+
     if (!formData.email.trim()) {
       emailError = "This field is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -39,11 +40,13 @@ function PersonalInfo({ formData, handleChange, onNext }) {
 
     setErrors((prev) => {
       const newErrors = { ...prev };
+
       if (emailError) {
         newErrors.email = emailError;
       } else {
         delete newErrors.email;
       }
+
       return newErrors;
     });
   };
@@ -62,36 +65,44 @@ function PersonalInfo({ formData, handleChange, onNext }) {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      onNext(); // go to step 2
+      onNext();
     }
   };
 
   return (
     <div>
       <h2 className="mb-3 text-[25px] font-bold">Personal Information</h2>
+
       <p className="text-gray-500 mb-4">Tell us about yourself</p>
 
       {/* Name */}
       <div className="mb-5">
-        <label>
-          Full Name <span>*</span>
+        <label className="block mb-2 text-[14px] font-medium">
+          Full Name <span className="text-red-500">*</span>
         </label>
+
         <input
           type="text"
           name="name"
           placeholder="e.g. Priya Sharma"
           value={formData.name}
           onChange={handleChange}
-          className={errors.name ? "error-input" : ""}
+          className={`w-full border ${
+            errors.name ? "border-red-500" : "border-gray-300"
+          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
         />
-        {errors.name && <p className="error">{errors.name}</p>}
+
+        {errors.name && (
+          <p className="text-red-500 text-[13px] mt-1">{errors.name}</p>
+        )}
       </div>
 
       {/* Email */}
       <div className="mb-5">
-        <label>
-          Email Address <span>*</span>
+        <label className="block mb-2 text-[14px] font-medium">
+          Email Address <span className="text-red-500">*</span>
         </label>
+
         <input
           type="email"
           name="email"
@@ -99,15 +110,20 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           value={formData.email}
           onChange={handleChange}
           onBlur={handleEmailBlur}
-          className={errors.email ? "error-input" : ""}
+          className={`w-full border ${
+            errors.email ? "border-red-500" : "border-gray-300"
+          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
         />
-        {errors.email && <p className="error">{errors.email}</p>}
+
+        {errors.email && (
+          <p className="text-red-500 text-[13px] mt-1">{errors.email}</p>
+        )}
       </div>
 
-      {/* Phone (Updated) */}
+      {/* Phone */}
       <div className="mb-5">
-        <label>
-          Phone Number <span>*</span>
+        <label className="block mb-2 text-[14px] font-medium">
+          Phone Number <span className="text-red-500">*</span>
         </label>
 
         <PhoneInput
@@ -116,21 +132,28 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           value={formData.phone}
           onChange={(value) =>
             handleChange({
-              target: { name: "phone", value: value || "" },
+              target: {
+                name: "phone",
+                value: value || "",
+              },
             })
           }
-          className={errors.phone ? "error-input" : ""}
+          className={`w-full border ${
+            errors.phone ? "border-red-500" : "border-gray-300"
+          } rounded-[6px] px-3 py-1 focus-within:border-[#5b4df5]`}
         />
 
-        {errors.phone && <p className="error">{errors.phone}</p>}
+        {errors.phone && (
+          <p className="text-red-500 text-[13px] mt-1">{errors.phone}</p>
+        )}
       </div>
 
+      {/* Next Button */}
       <div className="flex justify-end mt-[10px]">
         <button
-          className="bg-[#5b4df5] text-white py-[10px] px-5 rounded-[8px] cursor-pointer text-[14px] 
-          flex items-center justify-center gap-2"
-          onClick={handleNext}
-          disabled={!isFormFilled}
+          className="bg-[#5b4df5] hover:bg-[#4a3de0] disabled:bg-[#b0aae8] 
+          disabled:cursor-not-allowed text-white py-[10px] px-5 rounded-[8px] 
+          cursor-pointer text-[14px] flex items-center justify-center gap-2 transition-all duration-200"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

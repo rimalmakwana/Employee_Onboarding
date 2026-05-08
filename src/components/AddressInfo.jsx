@@ -78,7 +78,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
       <p className="text-gray-500 mb-5">Where are you based?</p>
 
       {/* City */}
-      <div className="">
+      <div className="mb-5">
         <label>
           City <span>*</span>
         </label>
@@ -116,7 +116,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
         </div>
 
         {/* Pincode */}
-        <div className="form-group">
+        <div className="mb-5">
           <label>
             Pincode <span>*</span>
           </label>
@@ -148,17 +148,19 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
       {/* Back and Next buttons */}
       <div className="flex justify-between mt-[10px]">
+        {/* Back Button */}
         <button
-          className="bg-gray-100 text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] 
-        cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2"
+          className="bg-gray-100 hover:bg-[#e5e7eb] text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2 transition-all duration-200"
           onClick={onBack}
         >
           <ArrowLeft size={18} /> Back
         </button>
 
+        {/* Next Button */}
         <button
-          className="bg-[#5b4df5] text-white py-[10px] px-5 rounded-[8px] cursor-pointer text-[14px] 
-          flex items-center justify-center gap-2"
+          className="bg-[#5b4df5] hover:bg-[#4a3de0] disabled:bg-[#b0aae8] 
+    disabled:cursor-not-allowed text-white py-3 px-6 rounded-[6px] 
+    cursor-pointer text-[14px] font-semibold flex items-center justify-center gap-2 transition-all duration-200"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

@@ -56,7 +56,7 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
             <span>{section.title}</span>
 
             <button
-              className="bg-none border-none text-[#5b4df5] cursor-pointer text-[13px] font-medium"
+              className="text-[#5b4df5] cursor-pointer text-[13px] font-medium hover:text-[#4a3de0] transition-all duration-200"
               onClick={() => goToStep(section.step)}
             >
               Edit
@@ -73,7 +73,7 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
                 {field.label}
               </span>
 
-              <span className="text-[#111] font-medium text-right max-w-[65%] overflow-hidden text-ellipsis break-words line-clamp-2">
+              <span className="text-[#111] font-medium text-right max-w-[65%] break-words">
                 {field.value}
               </span>
             </div>
@@ -83,16 +83,22 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
 
       {/* Buttons */}
       <div className="flex justify-between mt-[10px]">
+        
+        {/* Back Button */}
         <button
-          className="bg-gray-100 text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2"
+          className="bg-gray-100 hover:bg-[#e5e7eb] text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2 transition-all duration-200"
           onClick={onBack}
         >
           <ArrowLeft size={18} />
           Back
         </button>
 
-        <button className="submit-btn" onClick={onSubmit}>
-          Submit <Check />
+        {/* Submit Button */}
+        <button
+          className="bg-[#16a34a] hover:bg-[#15803d] text-white py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-semibold flex items-center justify-center gap-2 transition-all duration-200"
+          onClick={onSubmit}
+        >
+          Submit <Check size={18} />
         </button>
       </div>
     </div>
