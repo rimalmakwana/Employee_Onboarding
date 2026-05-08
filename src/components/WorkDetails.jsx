@@ -47,11 +47,12 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
 
   return (
     <div>
-      <h2>Work Details</h2>
-      <p className="form-subtitle">Help us place you in the right team</p>
+      <h2 className="text-[25px] font-bold mb-4">Work Details</h2>
+
+      <p className="text-gray-500 mb-5">Help us place you in the right team</p>
 
       {/* Department */}
-      <div className="form-group">
+      <div className="mb-5">
         <label>
           Department <span>*</span>
         </label>
@@ -72,7 +73,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
       </div>
 
       {/* Role */}
-      <div className="form-group">
+      <div className="mb-5">
         <label>
           Role <span>*</span>
         </label>
@@ -93,7 +94,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
       </div>
 
       {/* Experience */}
-      <div className="form-group">
+      <div className="mb-5">
         <label>
           Experience (years) <span>*</span>
         </label>
@@ -111,12 +112,14 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
       </div>
 
       {/* Buttons */}
-      <div className="button-container">
-        <button className="back-btn" onClick={onBack}>
+      <div className="flex justify-between mt-[10px]">
+        <button className="bg-gray-100 text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] 
+        cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2" onClick={onBack}>
           <ArrowLeft size={18} /> Back
         </button>
         <button
-          className="next-btn"
+          className="bg-[#5b4df5] text-white py-[10px] px-5 rounded-[8px] cursor-pointer text-[14px] 
+          flex items-center justify-center gap-2"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

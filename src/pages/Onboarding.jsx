@@ -94,7 +94,7 @@ const Onboarding = () => {
   return (
     <div className="max-w-[700px] mx-auto p-5 my-10">
       
-      <h1 className="mb-[5px]">Employee Onboarding</h1>
+      <h2 className="text-[33px] font-bold mb-[5px]">Employee Onboarding</h2>
 
       <p className="text-gray-500 mb-5">Step {currentStep} of 4</p>
 

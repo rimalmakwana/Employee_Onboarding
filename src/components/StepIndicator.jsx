@@ -67,7 +67,7 @@ const StepIndicator = ({ currentStep }) => {
               <div
                 className={`
                   flex-1
-                  h-[2px]
+                  h-px
                   mt-[16px]
                   ${
                     isCompleted

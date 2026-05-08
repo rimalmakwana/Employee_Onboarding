@@ -68,11 +68,11 @@ function PersonalInfo({ formData, handleChange, onNext }) {
 
   return (
     <div>
-      <h2>Personal Information</h2>
-      <p className="form-subtitle">Tell us about yourself</p>
+      <h2 className="mb-3 text-[25px] font-bold">Personal Information</h2>
+      <p className="text-gray-500 mb-4">Tell us about yourself</p>
 
       {/* Name */}
-      <div className="form-group">
+      <div className="mb-5">
         <label>
           Full Name <span>*</span>
         </label>
@@ -88,7 +88,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
       </div>
 
       {/* Email */}
-      <div className="form-group">
+      <div className="mb-5">
         <label>
           Email Address <span>*</span>
         </label>
@@ -105,7 +105,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
       </div>
 
       {/* Phone (Updated) */}
-      <div className="form-group">
+      <div className="mb-5">
         <label>
           Phone Number <span>*</span>
         </label>
@@ -125,7 +125,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         {errors.phone && <p className="error">{errors.phone}</p>}
       </div>
 
-      <div className="button-container" style={{ justifyContent: "flex-end" }}>
+      <div className="flex justify-end mt-[10px]" >
         <button
           className="next-btn"
           onClick={handleNext}

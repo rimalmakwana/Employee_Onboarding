@@ -71,14 +71,14 @@ body {
 } */
 
 /* Form */
-.form-subtitle {
+/* .form-subtitle {
   color: gray;
   margin-bottom: 20px;
-}
+} */
 
-.form-group {
+/* .form-group {
   margin-bottom: 20px;
-}
+} */
 
 label {
   display: block;
@@ -164,13 +164,13 @@ input:-webkit-autofill:active {
 }
 
 /* Buttons */
-.button-container {
+/* .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-}
+} */
 
-.next-btn {
+/* .next-btn {
   background: #5b4df5;
   color: white;
   border: none;
@@ -182,9 +182,9 @@ input:-webkit-autofill:active {
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
+} */
 
-.back-btn {
+/* .back-btn {
   background: #f3f4f6;
   color: #111;
   border: 1px solid #e5e7eb;
@@ -197,7 +197,7 @@ input:-webkit-autofill:active {
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
+} */
 
 .back-btn:hover {
   background: #e5e7eb;
