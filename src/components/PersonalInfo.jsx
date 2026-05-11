@@ -71,14 +71,14 @@ function PersonalInfo({ formData, handleChange, onNext }) {
 
   return (
     <div>
-      <h2 className="mb-3 text-[25px] font-bold">Personal Information</h2>
+      <h2 className="page-title">Personal Information</h2>
 
-      <p className="text-gray-500 mb-4">Tell us about yourself</p>
+      <p className="page-subtitle">Tell us about yourself</p>
 
       {/* Name */}
       <div className="mb-5">
-        <label className="block mb-2 text-[14px] font-medium">
-          Full Name <span className="text-red-500">*</span>
+        <label className="form-label">
+          Full Name <span className="text-danger">*</span>
         </label>
 
         <TextInput
@@ -91,14 +91,14 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         />
 
         {errors.name && (
-          <p className="text-red-500 text-[13px] mt-1">{errors.name}</p>
+          <p className="error-text">{errors.name}</p>
         )}
       </div>
 
       {/* Email */}
       <div className="mb-5">
-        <label className="block mb-2 text-[14px] font-medium">
-          Email Address <span className="text-red-500">*</span>
+        <label className="form-label">
+          Email Address <span className="text-danger">*</span>
         </label>
 
         <TextInput
@@ -112,14 +112,14 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         />
 
         {errors.email && (
-          <p className="text-red-500 text-[13px] mt-1">{errors.email}</p>
+          <p className="error-text">{errors.email}</p>
         )}
       </div>
 
       {/* Phone */}
       <div className="mb-5">
-        <label className="block mb-2 text-[14px] font-medium">
-          Phone Number <span className="text-red-500">*</span>
+        <label className="form-label">
+          Phone Number <span className="text-danger">*</span>
         </label>
 
         <PhoneInputField
@@ -138,16 +138,14 @@ function PersonalInfo({ formData, handleChange, onNext }) {
         />
 
         {errors.phone && (
-          <p className="text-red-500 text-[13px] mt-1">{errors.phone}</p>
+          <p className="error-text">{errors.phone}</p>
         )}
       </div>
 
       {/* Next Button */}
-      <div className="flex justify-end mt-[10px]">
+      <div className="flex justify-end mt-2.5">
         <button
-          className="bg-[#5b4df5] hover:bg-[#4a3de0] disabled:bg-[#b0aae8] 
-          disabled:cursor-not-allowed text-white py-[10px] px-5 rounded-[8px] 
-          cursor-pointer text-[14px] flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-primary"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

@@ -74,14 +74,14 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
   return (
     <div>
-      <h2 className="text-[25px] font-bold mb-4">Address Information</h2>
+      <h2 className="page-title">Address Information</h2>
 
-      <p className="text-gray-500 mb-5">Where are you based?</p>
+      <p className="page-subtitle">Where are you based?</p>
 
       {/* City */}
       <div className="mb-5">
-        <label>
-          City <span>*</span>
+        <label className="form-label">
+          City <span className="text-danger">*</span>
         </label>
 
         <TextInput
@@ -93,15 +93,15 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
           error={!!errors.city}
         />
 
-        {errors?.city && <p className="text-red-500 text-[12px] mt-[5px]">{errors.city}</p>}
+        {errors?.city && <p className="error-text">{errors.city}</p>}
       </div>
 
       {/* State and Pincode side by side */}
-      <div className="flex gap-[10px]">
+      <div className="flex gap-2.5">
         {/* State */}
         <div className="flex-1">
-          <label>
-            State <span>*</span>
+          <label className="form-label">
+            State <span className="text-danger">*</span>
           </label>
 
           <TextInput
@@ -113,13 +113,13 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
             error={!!errors.state}
           />
 
-          {errors?.state && <p className="text-red-500 text-[12px] mt-[5px]">{errors.state}</p>}
+          {errors?.state && <p className="error-text">{errors.state}</p>}
         </div>
 
         {/* Pincode */}
         <div className="mb-5">
-          <label>
-            Pincode <span>*</span>
+          <label className="form-label">
+            Pincode <span className="text-danger">*</span>
           </label>
 
           <TextInput
@@ -132,12 +132,12 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
             error={!!errors.pincode}
           />
 
-          {errors?.pincode && <p className="text-red-500 text-[12px] mt-[5px]">{errors.pincode}</p>}
+          {errors?.pincode && <p className="error-text">{errors.pincode}</p>}
         </div>
       </div>
 
       {/* Render the Map */}
-      <div className="w-full h-[300px] mt-5 rounded-[12px] overflow-hidden">
+      <div className="w-full h-75 mt-5 rounded-xl overflow-hidden">
         <GoogleMap
           zoom={12}
           center={location}
@@ -148,10 +148,10 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
       </div>
 
       {/* Back and Next buttons */}
-      <div className="flex justify-between mt-[10px]">
+      <div className="flex justify-between mt-2.5">
         {/* Back Button */}
         <button
-          className="bg-gray-100 hover:bg-[#e5e7eb] text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-secondary"
           onClick={onBack}
         >
           <ArrowLeft size={18} /> Back
@@ -159,9 +159,7 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
         {/* Next Button */}
         <button
-          className="bg-[#5b4df5] hover:bg-[#4a3de0] disabled:bg-[#b0aae8] 
-    disabled:cursor-not-allowed text-white py-3 px-6 rounded-[6px] 
-    cursor-pointer text-[14px] font-semibold flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-primary"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

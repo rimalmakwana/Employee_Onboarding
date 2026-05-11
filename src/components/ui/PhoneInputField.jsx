@@ -15,10 +15,10 @@ function PhoneInputField({ error = false, value, onChange, ...props }) {
       value={value}
       onChange={onChange}
       className={`w-full border ${
-        error ? "border-red-500" : "border-gray-300"
-      } rounded-[6px] pl-[10px] py-1 bg-white
-      focus-within:border-[#5b4df5]
-      [&:has(input:not(:placeholder-shown))]:bg-[#e8f0fe]
+        error ? "border-danger" : "border-border"
+      } rounded-md pl-2.5 py-2.5 bg-white
+      focus-within:border-primary
+      [&:has(input:not(:placeholder-shown))]:bg-primary-light
       transition-colors duration-200
       [&_input]:border-none [&_input]:bg-transparent [&_input]:outline-none [&_input]:focus:border-none`}
       {...props}

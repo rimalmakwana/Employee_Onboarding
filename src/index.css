@@ -1,7 +1,96 @@
 @import "tailwindcss";
 
+/* 2. Global design tokens (:root CSS variables) */
+@import "./styles/theme.css";
+
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-light: var(--color-primary-light);
+
+  --color-success: var(--color-success);
+  --color-success-hover: var(--color-success-hover);
+  --color-success-light: var(--color-success-light);
+
+  --color-danger: var(--color-danger);
+  --color-danger-light: var(--color-danger-light);
+
+  --color-warning: var(--color-warning);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+
+  --color-border: var(--color-border);
+
+  --color-bg: var(--color-bg);
+  --color-bg-light: var(--color-bg-light);
+  --color-surface: var(--color-surface);
+
+  --font-sans: var(--font-sans);
+
+  /* Spacing overrides / additions */
+  --spacing-page-y: var(--spacing-page-y);
+
+  /* Max Widths */
+  --width-form: var(--width-form);
+  --width-small: var(--width-small);
+
+  /* Custom Font Size */
+  --text-2.5xl: 25px;
+}
+
+/* BASE STYLES */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f6f7fb;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
   margin: 0;
+}
+
+/*  REUSABLE COMPONENT CLASSES */
+@layer components {
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 px-6 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-text-primary border border-border py-3 px-6 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer;
+  }
+
+  .btn-success {
+    @apply bg-success hover:bg-success-hover disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 px-6 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer;
+  }
+
+  /* ---- Form Elements ---- */
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-text-primary;
+  }
+
+  .error-text {
+    @apply text-danger text-sm mt-1;
+  }
+
+  /* ---- Typography ---- */
+  .page-title {
+    @apply text-2.5xl font-bold mb-4 text-text-primary;
+  }
+
+  .page-subtitle {
+    @apply text-text-secondary mb-5 text-sm;
+  }
+
+  /* ---- Card ---- */
+  .card {
+    @apply bg-surface border border-border rounded-lg py-4 px-5;
+  }
 }

@@ -37,11 +37,11 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
 
   return (
     <div>
-      <h2 className="text-[25px] font-bold mb-4">
+      <h2 className="page-title">
         Review & Submit
       </h2>
 
-      <p className="text-gray-500 mb-5">
+      <p className="page-subtitle">
         Confirm your details before submitting
       </p>
 
@@ -49,14 +49,14 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
       {sections.map((section, index) => (
         <div
           key={index}
-          className="bg-[#fafafa] border border-[#ebebeb] rounded-[8px] py-[15px] px-5 mb-[15px]"
+          className="card mb-3.75"
         >
           {/* Header */}
-          <div className="flex justify-between items-center mb-[15px] text-[12px] text-gray-500 font-bold tracking-[0.5px]">
+          <div className="flex justify-between items-center mb-3.75 text-xs text-text-secondary font-bold tracking-tight">
             <span>{section.title}</span>
 
             <button
-              className="text-[#5b4df5] cursor-pointer text-[13px] font-medium hover:text-[#4a3de0] transition-all duration-200"
+              className="text-primary cursor-pointer text-sm font-medium hover:text-primary-hover transition-all duration-200"
               onClick={() => goToStep(section.step)}
             >
               Edit
@@ -67,13 +67,13 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
           {section.fields.map((field, i) => (
             <div
               key={i}
-              className="flex justify-between py-[6px] text-[14px]"
+              className="flex justify-between py-1.5 text-sm"
             >
-              <span className="text-gray-500">
+              <span className="text-text-secondary">
                 {field.label}
               </span>
 
-              <span className="text-[#111] font-medium text-right max-w-[65%] break-words">
+              <span className="text-text-primary font-medium text-right max-w-2/3 break-words">
                 {field.value}
               </span>
             </div>
@@ -82,11 +82,11 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
       ))}
 
       {/* Buttons */}
-      <div className="flex justify-between mt-[10px]">
-        
+      <div className="flex justify-between mt-2.5">
+
         {/* Back Button */}
         <button
-          className="bg-gray-100 hover:bg-[#e5e7eb] text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-secondary"
           onClick={onBack}
         >
           <ArrowLeft size={18} />
@@ -95,7 +95,7 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
 
         {/* Submit Button */}
         <button
-          className="bg-[#16a34a] hover:bg-[#15803d] text-white py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-semibold flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-success"
           onClick={onSubmit}
         >
           Submit <Check size={18} />

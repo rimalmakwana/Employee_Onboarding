@@ -50,18 +50,18 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
 
   return (
     <div>
-      <h2 className="text-[25px] font-bold mb-4">
+      <h2 className="page-title">
         Work Details
       </h2>
 
-      <p className="text-gray-500 mb-5">
+      <p className="page-subtitle">
         Help us place you in the right team
       </p>
 
       {/* Department */}
       <div className="mb-5">
-        <label className="block mb-2 text-[14px] font-medium">
-          Department <span className="text-red-500">*</span>
+        <label className="form-label">
+          Department <span className="text-danger">*</span>
         </label>
 
         <SelectInput
@@ -79,7 +79,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
         </SelectInput>
 
         {errors.department && (
-          <p className="text-red-500 text-[13px] mt-1">
+          <p className="error-text">
             {errors.department}
           </p>
         )}
@@ -87,8 +87,8 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
 
       {/* Role */}
       <div className="mb-5">
-        <label className="block mb-2 text-[14px] font-medium">
-          Role <span className="text-red-500">*</span>
+        <label className="form-label">
+          Role <span className="text-danger">*</span>
         </label>
 
         <SelectInput
@@ -106,7 +106,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
         </SelectInput>
 
         {errors.role && (
-          <p className="text-red-500 text-[13px] mt-1">
+          <p className="error-text">
             {errors.role}
           </p>
         )}
@@ -114,9 +114,9 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
 
       {/* Experience */}
       <div className="mb-5">
-        <label className="block mb-2 text-[14px] font-medium">
+        <label className="form-label">
           Experience (years)
-          <span className="text-red-500">*</span>
+          <span className="text-danger">*</span>
         </label>
 
         <TextInput
@@ -131,18 +131,18 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
         />
 
         {errors.experience && (
-          <p className="text-red-500 text-[13px] mt-1">
+          <p className="error-text">
             {errors.experience}
           </p>
         )}
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-between mt-[10px]">
+      <div className="flex justify-between mt-2.5">
         
         {/* Back Button */}
         <button
-          className="bg-gray-100 hover:bg-[#e5e7eb] text-[#111] border border-gray-200 py-3 px-6 rounded-[6px] cursor-pointer text-[14px] font-medium flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-secondary"
           onClick={onBack}
         >
           <ArrowLeft size={18} />
@@ -151,9 +151,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
 
         {/* Next Button */}
         <button
-          className="bg-[#5b4df5] hover:bg-[#4a3de0] disabled:bg-[#b0aae8] 
-          disabled:cursor-not-allowed text-white py-3 px-6 rounded-[6px] 
-          cursor-pointer text-[14px] font-semibold flex items-center justify-center gap-2 transition-all duration-200"
+          className="btn-primary"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

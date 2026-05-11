@@ -79,7 +79,7 @@ const Onboarding = () => {
   if (isSubmitted) {
     return (
       <div className="container max-w-[500px] mx-auto mt-[80px]">
-        <div className="bg-white p-[25px] rounded-[10px] shadow-md py-10 px-[30px]">
+        <div className="card py-10 px-[30px]">
           <SuccessScreen
             name={formData.name}
             email={formData.email}
@@ -94,13 +94,13 @@ const Onboarding = () => {
   return (
     <div className="max-w-[700px] mx-auto p-5 my-10">
       
-      <h2 className="text-[33px] font-bold mb-[5px]">Employee Onboarding</h2>
+      <h2 className="text-3xl font-bold mb-1 text-text-primary">Employee Onboarding</h2>
 
-      <p className="text-gray-500 mb-5">Step {currentStep} of 4</p>
+      <p className="text-text-secondary mb-5 text-sm">Step {currentStep} of 4</p>
 
       <StepIndicator currentStep={currentStep} />
 
-      <div className="bg-white p-[25px] rounded-[10px] shadow-md">
+      <div className="card">
 
         {currentStep === 1 && (
           <PersonalInfo

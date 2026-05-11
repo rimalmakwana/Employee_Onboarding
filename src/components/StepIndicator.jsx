@@ -1,5 +1,3 @@
-
-
 // List of all 4 steps
 const steps = [
   { number: 1, label: "Personal Info" },
@@ -10,7 +8,7 @@ const steps = [
 
 const StepIndicator = ({ currentStep }) => {
   return (
-    <div className="flex items-center mb-[30px]">
+    <div className="flex items-center mb-7.5">
       {steps.map((step, index) => {
         const isCompleted = step.number < currentStep;
         const isActive = step.number === currentStep;
@@ -24,23 +22,18 @@ const StepIndicator = ({ currentStep }) => {
             }`}
           >
             {/* Circle + Label */}
-            <div className="w-[90px] flex flex-col items-center">
+            <div className="w-22.5 flex flex-col items-center">
               <div
                 className={`
-                  w-[35px]
-                  h-[35px]
-                  rounded-full
-                  flex
-                  items-center
-                  justify-center
-                  mb-[5px]
-                  text-[14px]
+                  w-8.75 h-8.75 rounded-full
+                  flex items-center justify-center
+                  mb-1.25 text-sm
                   ${
                     isCompleted
-                      ? "bg-green-500 text-white"
+                      ? "bg-success text-white"          
                       : isActive
-                      ? "bg-[#5b4df5] text-white"
-                      : "bg-[#f0f0f0] text-[#777]"
+                      ? "bg-primary text-white"         
+                      : "bg-bg-light text-text-secondary" 
                   }
                 `}
               >
@@ -49,12 +42,11 @@ const StepIndicator = ({ currentStep }) => {
 
               <p
                 className={`
-                  text-center
-                  text-[12px]
+                  text-center text-xs
                   ${
                     isActive
-                      ? "text-[#5b4df5] font-bold"
-                      : "text-gray-500"
+                      ? "text-primary font-bold"         
+                      : "text-text-secondary"            
                   }
                 `}
               >
@@ -62,17 +54,15 @@ const StepIndicator = ({ currentStep }) => {
               </p>
             </div>
 
-            {/* Line */}
+            {/* Connector Line */}
             {!isLastStep && (
               <div
                 className={`
-                  flex-1
-                  h-px
-                  mt-[16px]
+                  flex-1 h-px mt-4
                   ${
                     isCompleted
-                      ? "bg-[#5b4df5]"
-                      : "bg-[#e2e2e2]"
+                      ? "bg-primary"                     
+                      : "bg-border"                      
                   }
                 `}
               ></div>
@@ -83,4 +73,5 @@ const StepIndicator = ({ currentStep }) => {
     </div>
   );
 };
+
 export default StepIndicator;
