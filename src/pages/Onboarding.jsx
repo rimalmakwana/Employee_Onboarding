@@ -24,9 +24,11 @@ const Onboarding = () => {
     role: "",
     experience: "",
     // Step 3
+    street: "",
     city: "",
     state: "",
     pincode: "",
+    country: "",
   });
 
   // This updates any field by name
@@ -69,9 +71,11 @@ const Onboarding = () => {
       department: "",
       role: "",
       experience: "",
+      street: "",
       city: "",
       state: "",
       pincode: "",
+      country: "",
     });
   };
 

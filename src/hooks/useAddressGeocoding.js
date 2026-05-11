@@ -15,6 +15,7 @@ export function useAddressGeocoding(address) {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: ["places"],
   });
 
   useEffect(() => {

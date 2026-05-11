@@ -28,9 +28,11 @@ function ReviewSubmit({ formData, onBack, onSubmit, goToStep }) {
       title: "ADDRESS",
       step: 3,
       fields: [
+        { label: "Street", value: formData.street },
         { label: "City", value: formData.city },
         { label: "State", value: formData.state },
         { label: "Pincode", value: formData.pincode },
+        { label: "Country", value: formData.country },
       ],
     },
   ];

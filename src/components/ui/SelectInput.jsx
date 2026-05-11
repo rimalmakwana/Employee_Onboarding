@@ -8,9 +8,8 @@
 function SelectInput({ error = false, className = "", children, ...props }) {
   return (
     <select
-      className={`w-full border ${
-        error ? "border-danger" : "border-border"
-      } rounded-md px-3 py-3 outline-none text-sm box-border bg-white
+      className={`w-full border ${error ? "border-danger" : "border-border"
+        } rounded-md px-3 py-3 outline-none text-sm box-border bg-white
       focus:border-primary
       transition-colors duration-200
       ${className}`}
