@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import { ArrowRight } from "lucide-react";
+import TextInput from "./ui/TextInput";
+import PhoneInputField from "./ui/PhoneInputField";
 
 // formData and handleChange come from parent (Onboarding.jsx)
 function PersonalInfo({ formData, handleChange, onNext }) {
@@ -81,15 +81,13 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           Full Name <span className="text-red-500">*</span>
         </label>
 
-        <input
+        <TextInput
           type="text"
           name="name"
           placeholder="e.g. Priya Sharma"
           value={formData.name}
           onChange={handleChange}
-          className={`w-full border ${
-            errors.name ? "border-red-500" : "border-gray-300"
-          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
+          error={!!errors.name}
         />
 
         {errors.name && (
@@ -103,16 +101,14 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           Email Address <span className="text-red-500">*</span>
         </label>
 
-        <input
+        <TextInput
           type="email"
           name="email"
           placeholder="you@company.com"
           value={formData.email}
           onChange={handleChange}
           onBlur={handleEmailBlur}
-          className={`w-full border ${
-            errors.email ? "border-red-500" : "border-gray-300"
-          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
+          error={!!errors.email}
         />
 
         {errors.email && (
@@ -126,7 +122,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
           Phone Number <span className="text-red-500">*</span>
         </label>
 
-        <PhoneInput
+        <PhoneInputField
           placeholder="Enter phone number"
           defaultCountry="IN"
           value={formData.phone}
@@ -138,9 +134,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
               },
             })
           }
-          className={`w-full border ${
-            errors.phone ? "border-red-500" : "border-gray-300"
-          } rounded-[6px] px-3 py-1 focus-within:border-[#5b4df5]`}
+          error={!!errors.phone}
         />
 
         {errors.phone && (

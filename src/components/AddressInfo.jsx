@@ -2,6 +2,7 @@ import { useState } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useAddressGeocoding } from "../hooks/useAddressGeocoding";
+import TextInput from "./ui/TextInput";
 
 function AddressInfo({ formData, handleChange, onNext, onBack }) {
   const [errors, setErrors] = useState({});
@@ -83,16 +84,16 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
           City <span>*</span>
         </label>
 
-        <input
+        <TextInput
           type="text"
           name="city"
           placeholder="e.g. Bengaluru"
           value={formData.city}
           onChange={handleChange}
-          className={errors.city ? "error-input" : ""}
+          error={!!errors.city}
         />
 
-        {errors?.city && <p className="error">{errors.city}</p>}
+        {errors?.city && <p className="text-red-500 text-[12px] mt-[5px]">{errors.city}</p>}
       </div>
 
       {/* State and Pincode side by side */}
@@ -103,16 +104,16 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
             State <span>*</span>
           </label>
 
-          <input
+          <TextInput
             type="text"
             name="state"
             placeholder="e.g. Karnataka"
             value={formData.state}
             onChange={handleChange}
-            className={errors.state ? "error-input" : ""}
+            error={!!errors.state}
           />
 
-          {errors?.state && <p className="error">{errors.state}</p>}
+          {errors?.state && <p className="text-red-500 text-[12px] mt-[5px]">{errors.state}</p>}
         </div>
 
         {/* Pincode */}
@@ -121,17 +122,17 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
             Pincode <span>*</span>
           </label>
 
-          <input
+          <TextInput
             type="text"
             inputMode="numeric"
             name="pincode"
             placeholder="e.g. 560001"
             value={formData.pincode}
             onChange={handlePincodeChange}
-            className={errors.pincode ? "error-input" : ""}
+            error={!!errors.pincode}
           />
 
-          {errors?.pincode && <p className="error">{errors.pincode}</p>}
+          {errors?.pincode && <p className="text-red-500 text-[12px] mt-[5px]">{errors.pincode}</p>}
         </div>
       </div>
 

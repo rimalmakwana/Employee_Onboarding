@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import SelectInput from "./ui/SelectInput";
+import TextInput from "./ui/TextInput";
 
 // formData and handleChange come from parent (Onboarding.jsx)
 function WorkDetails({ formData, handleChange, onNext, onBack }) {
@@ -62,15 +64,11 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           Department <span className="text-red-500">*</span>
         </label>
 
-        <select
+        <SelectInput
           name="department"
           value={formData.department}
           onChange={handleChange}
-          className={`w-full border ${
-            errors.department
-              ? "border-red-500"
-              : "border-gray-300"
-          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
+          error={!!errors.department}
         >
           <option value="">-- Select Department --</option>
           <option value="Engineering">Engineering</option>
@@ -78,7 +76,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           <option value="Marketing">Marketing</option>
           <option value="HR">HR</option>
           <option value="Finance">Finance</option>
-        </select>
+        </SelectInput>
 
         {errors.department && (
           <p className="text-red-500 text-[13px] mt-1">
@@ -93,27 +91,19 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           Role <span className="text-red-500">*</span>
         </label>
 
-        <select
+        <SelectInput
           name="role"
           value={formData.role}
           onChange={handleChange}
-          className={`w-full border ${
-            errors.role ? "border-red-500" : "border-gray-300"
-          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
+          error={!!errors.role}
         >
           <option value="">-- Select Role --</option>
-          <option value="Frontend Developer">
-            Frontend Developer
-          </option>
-          <option value="Backend Developer">
-            Backend Developer
-          </option>
-          <option value="UI/UX Designer">
-            UI/UX Designer
-          </option>
+          <option value="Frontend Developer">Frontend Developer</option>
+          <option value="Backend Developer">Backend Developer</option>
+          <option value="UI/UX Designer">UI/UX Designer</option>
           <option value="HR Manager">HR Manager</option>
           <option value="Accountant">Accountant</option>
-        </select>
+        </SelectInput>
 
         {errors.role && (
           <p className="text-red-500 text-[13px] mt-1">
@@ -129,7 +119,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           <span className="text-red-500">*</span>
         </label>
 
-        <input
+        <TextInput
           type="number"
           name="experience"
           placeholder="e.g. 2"
@@ -137,11 +127,7 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           onChange={handleChange}
           min="0"
           max="40"
-          className={`w-full border ${
-            errors.experience
-              ? "border-red-500"
-              : "border-gray-300"
-          } rounded-[6px] px-3 py-3 outline-none focus:border-[#5b4df5]`}
+          error={!!errors.experience}
         />
 
         {errors.experience && (

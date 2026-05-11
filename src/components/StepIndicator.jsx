@@ -1,4 +1,4 @@
-import "./StepIndicator.css";
+
 
 // List of all 4 steps
 const steps = [
