@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import SelectInput from "./ui/SelectInput";
+import TextInput from "./ui/TextInput";
+
 // formData and handleChange come from parent (Onboarding.jsx)
 function WorkDetails({ formData, handleChange, onNext, onBack }) {
   const [errors, setErrors] = useState({});
@@ -41,25 +44,31 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      onNext(); // go to next step
+      onNext();
     }
   };
 
   return (
     <div>
-      <h2>Work Details</h2>
-      <p className="form-subtitle">Help us place you in the right team</p>
+      <h2 className="page-title">
+        Work Details
+      </h2>
+
+      <p className="page-subtitle">
+        Help us place you in the right team
+      </p>
 
       {/* Department */}
-      <div className="form-group">
-        <label>
-          Department <span>*</span>
+      <div className="mb-5">
+        <label className="form-label">
+          Department <span className="text-danger">*</span>
         </label>
-        <select
+
+        <SelectInput
           name="department"
           value={formData.department}
           onChange={handleChange}
-          className={errors.department ? "error-input" : ""}
+          error={!!errors.department}
         >
           <option value="">-- Select Department --</option>
           <option value="Engineering">Engineering</option>
@@ -67,20 +76,26 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           <option value="Marketing">Marketing</option>
           <option value="HR">HR</option>
           <option value="Finance">Finance</option>
-        </select>
-        {errors.department && <p className="error">{errors.department}</p>}
+        </SelectInput>
+
+        {errors.department && (
+          <p className="error-text">
+            {errors.department}
+          </p>
+        )}
       </div>
 
       {/* Role */}
-      <div className="form-group">
-        <label>
-          Role <span>*</span>
+      <div className="mb-5">
+        <label className="form-label">
+          Role <span className="text-danger">*</span>
         </label>
-        <select
+
+        <SelectInput
           name="role"
           value={formData.role}
           onChange={handleChange}
-          className={errors.role ? "error-input" : ""}
+          error={!!errors.role}
         >
           <option value="">-- Select Role --</option>
           <option value="Frontend Developer">Frontend Developer</option>
@@ -88,35 +103,55 @@ function WorkDetails({ formData, handleChange, onNext, onBack }) {
           <option value="UI/UX Designer">UI/UX Designer</option>
           <option value="HR Manager">HR Manager</option>
           <option value="Accountant">Accountant</option>
-        </select>
-        {errors.role && <p className="error">{errors.role}</p>}
+        </SelectInput>
+
+        {errors.role && (
+          <p className="error-text">
+            {errors.role}
+          </p>
+        )}
       </div>
 
       {/* Experience */}
-      <div className="form-group">
-        <label>
-          Experience (years) <span>*</span>
+      <div className="mb-5">
+        <label className="form-label">
+          Experience (years)
+          <span className="text-danger">*</span>
         </label>
-        <input
+
+        <TextInput
           type="number"
           name="experience"
           placeholder="e.g. 2"
           value={formData.experience}
           onChange={handleChange}
-          className={errors.experience ? "error-input" : ""}
           min="0"
           max="40"
+          error={!!errors.experience}
         />
-        {errors.experience && <p className="error">{errors.experience}</p>}
+
+        {errors.experience && (
+          <p className="error-text">
+            {errors.experience}
+          </p>
+        )}
       </div>
 
       {/* Buttons */}
-      <div className="button-container">
-        <button className="back-btn" onClick={onBack}>
-          <ArrowLeft size={18} /> Back
-        </button>
+      <div className="flex justify-between mt-2.5">
+        
+        {/* Back Button */}
         <button
-          className="next-btn"
+          className="btn-secondary"
+          onClick={onBack}
+        >
+          <ArrowLeft size={18} />
+          Back
+        </button>
+
+        {/* Next Button */}
+        <button
+          className="btn-primary"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

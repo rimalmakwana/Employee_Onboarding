@@ -1,0 +1,62 @@
+
+
+:root {
+  /* --- Primary (Purple) --- */
+  --color-primary:        #5b4df5;
+  --color-primary-hover:  #4a3de0;
+  --color-primary-light:  #f3f0ff;
+
+  /* --- Success (Green) --- */
+  --color-success:        #16a34a;
+  --color-success-hover:  #15803d;
+  --color-success-light:  #dcfce7;
+
+  /* --- Danger / Error (Red) --- */
+  --color-danger:         #ef4444;
+  --color-danger-light:   #fef2f2;
+
+  /* --- Warning (Amber) --- */
+  --color-warning:        #f59e0b;
+
+  /* --- Text --- */
+  --color-text-primary:   #111827;
+  --color-text-secondary: #6b7280;
+
+  /* --- Borders --- */
+  --color-border:         #e5e7eb;
+
+  /* --- Backgrounds --- */
+  --color-bg:             #f6f7fb;
+  --color-bg-light:       #fafafa;
+  --color-surface:        #ffffff;
+
+  /* --- Typography --- */
+  --font-sans: 'Inter', Arial, sans-serif;
+
+  /* --- Border Radius --- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+
+  /* --- Spacing --- */
+  --spacing-xs:  4px;
+  --spacing-sm:  8px;
+  --spacing-md:  16px;
+  --spacing-lg:  24px;
+  --spacing-xl:  32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-page-y: 80px;
+
+  /* --- Container Widths --- */
+  --width-form:  700px;
+  --width-small: 500px;
+}
+

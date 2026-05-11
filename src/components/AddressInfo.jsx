@@ -2,6 +2,7 @@ import { useState } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useAddressGeocoding } from "../hooks/useAddressGeocoding";
+import TextInput from "./ui/TextInput";
 
 function AddressInfo({ formData, handleChange, onNext, onBack }) {
   const [errors, setErrors] = useState({});
@@ -73,91 +74,92 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
 
   return (
     <div>
-      <h2>Address Information</h2>
+      <h2 className="page-title">Address Information</h2>
 
-      <p className="form-subtitle">Where are you based?</p>
+      <p className="page-subtitle">Where are you based?</p>
 
       {/* City */}
-      <div className="form-group">
-        <label>
-          City <span>*</span>
+      <div className="mb-5">
+        <label className="form-label">
+          City <span className="text-danger">*</span>
         </label>
 
-        <input
+        <TextInput
           type="text"
           name="city"
           placeholder="e.g. Bengaluru"
           value={formData.city}
           onChange={handleChange}
-          className={errors.city ? "error-input" : ""}
+          error={!!errors.city}
         />
 
-        {errors?.city && <p className="error">{errors.city}</p>}
+        {errors?.city && <p className="error-text">{errors.city}</p>}
       </div>
 
       {/* State and Pincode side by side */}
-      <div className="two-columns">
+      <div className="flex gap-2.5">
         {/* State */}
-        <div className="form-group">
-          <label>
-            State <span>*</span>
+        <div className="flex-1">
+          <label className="form-label">
+            State <span className="text-danger">*</span>
           </label>
 
-          <input
+          <TextInput
             type="text"
             name="state"
             placeholder="e.g. Karnataka"
             value={formData.state}
             onChange={handleChange}
-            className={errors.state ? "error-input" : ""}
+            error={!!errors.state}
           />
 
-          {errors?.state && (
-  <p className="error">{errors.state}</p>
-)}
+          {errors?.state && <p className="error-text">{errors.state}</p>}
         </div>
 
         {/* Pincode */}
-        <div className="form-group">
-          <label>
-            Pincode <span>*</span>
+        <div className="mb-5">
+          <label className="form-label">
+            Pincode <span className="text-danger">*</span>
           </label>
 
-          <input
+          <TextInput
             type="text"
             inputMode="numeric"
             name="pincode"
             placeholder="e.g. 560001"
             value={formData.pincode}
             onChange={handlePincodeChange}
-            className={errors.pincode ? "error-input" : ""}
+            error={!!errors.pincode}
           />
 
-          {errors?.pincode && (
-  <p className="error">{errors.pincode}</p>
-)}
+          {errors?.pincode && <p className="error-text">{errors.pincode}</p>}
         </div>
       </div>
 
       {/* Render the Map */}
-      <div className="map-wrapper">
+      <div className="w-full h-75 mt-5 rounded-xl overflow-hidden">
         <GoogleMap
           zoom={12}
           center={location}
-          mapContainerClassName="google-map-container"
+          mapContainerClassName="w-full h-full"
         >
           <Marker position={location} />
         </GoogleMap>
       </div>
 
       {/* Back and Next buttons */}
-      <div className="button-container">
-        <button className="back-btn" onClick={onBack}>
+      <div className="flex justify-between mt-2.5">
+        {/* Back Button */}
+        <button
+          className="btn-secondary"
+          onClick={onBack}
+        >
           <ArrowLeft size={18} /> Back
         </button>
 
+        {/* Next Button */}
         <button
-          className="next-btn"
+          className="btn-primary"
           onClick={handleNext}
           disabled={!isFormFilled}
         >

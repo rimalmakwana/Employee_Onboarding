@@ -78,8 +78,8 @@ const Onboarding = () => {
   // If form is submitted, show success screen
   if (isSubmitted) {
     return (
-      <div className="container success-page-container">
-        <div className="card success-card">
+      <div className="container max-w-[500px] mx-auto mt-[80px]">
+        <div className="card py-10 px-[30px]">
           <SuccessScreen
             name={formData.name}
             email={formData.email}
@@ -92,9 +92,11 @@ const Onboarding = () => {
 
   // Otherwise show the normal onboarding form
   return (
-    <div className="container">
-      <h1 className="title">Employee Onboarding</h1>
-      <p className="subtitle">Step {currentStep} of 4</p>
+    <div className="max-w-[700px] mx-auto p-5 my-10">
+      
+      <h2 className="text-3xl font-bold mb-1 text-text-primary">Employee Onboarding</h2>
+
+      <p className="text-text-secondary mb-5 text-sm">Step {currentStep} of 4</p>
 
       <StepIndicator currentStep={currentStep} />
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import { ArrowRight } from "lucide-react";
+import TextInput from "./ui/TextInput";
+import PhoneInputField from "./ui/PhoneInputField";
 
 // formData and handleChange come from parent (Onboarding.jsx)
 function PersonalInfo({ formData, handleChange, onNext }) {
@@ -31,6 +31,7 @@ function PersonalInfo({ formData, handleChange, onNext }) {
   // Validate email on blur
   const handleEmailBlur = () => {
     let emailError = "";
+
     if (!formData.email.trim()) {
       emailError = "This field is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -39,11 +40,13 @@ function PersonalInfo({ formData, handleChange, onNext }) {
 
     setErrors((prev) => {
       const newErrors = { ...prev };
+
       if (emailError) {
         newErrors.email = emailError;
       } else {
         delete newErrors.email;
       }
+
       return newErrors;
     });
   };
@@ -62,72 +65,87 @@ function PersonalInfo({ formData, handleChange, onNext }) {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      onNext(); // go to step 2
+      onNext();
     }
   };
 
   return (
     <div>
-      <h2>Personal Information</h2>
-      <p className="form-subtitle">Tell us about yourself</p>
+      <h2 className="page-title">Personal Information</h2>
+
+      <p className="page-subtitle">Tell us about yourself</p>
 
       {/* Name */}
-      <div className="form-group">
-        <label>
-          Full Name <span>*</span>
+      <div className="mb-5">
+        <label className="form-label">
+          Full Name <span className="text-danger">*</span>
         </label>
-        <input
+
+        <TextInput
           type="text"
-          name="name" 
+          name="name"
           placeholder="e.g. Priya Sharma"
           value={formData.name}
           onChange={handleChange}
-          className={errors.name ? "error-input" : ""}
+          error={!!errors.name}
         />
-        {errors.name && <p className="error">{errors.name}</p>}
+
+        {errors.name && (
+          <p className="error-text">{errors.name}</p>
+        )}
       </div>
 
       {/* Email */}
-      <div className="form-group">
-        <label>
-          Email Address <span>*</span>
+      <div className="mb-5">
+        <label className="form-label">
+          Email Address <span className="text-danger">*</span>
         </label>
-        <input
+
+        <TextInput
           type="email"
           name="email"
           placeholder="you@company.com"
           value={formData.email}
           onChange={handleChange}
           onBlur={handleEmailBlur}
-          className={errors.email ? "error-input" : ""}
+          error={!!errors.email}
         />
-        {errors.email && <p className="error">{errors.email}</p>}
+
+        {errors.email && (
+          <p className="error-text">{errors.email}</p>
+        )}
       </div>
 
-      {/* Phone (Updated) */}
-      <div className="form-group">
-        <label>
-          Phone Number <span>*</span>
+      {/* Phone */}
+      <div className="mb-5">
+        <label className="form-label">
+          Phone Number <span className="text-danger">*</span>
         </label>
 
-        <PhoneInput
+        <PhoneInputField
           placeholder="Enter phone number"
           defaultCountry="IN"
           value={formData.phone}
           onChange={(value) =>
             handleChange({
-              target: { name: "phone", value: value || "" },
+              target: {
+                name: "phone",
+                value: value || "",
+              },
             })
           }
-          className={errors.phone ? "error-input" : ""}
+          error={!!errors.phone}
         />
 
-        {errors.phone && <p className="error">{errors.phone}</p>}
+        {errors.phone && (
+          <p className="error-text">{errors.phone}</p>
+        )}
       </div>
 
-      <div className="button-container" style={{ justifyContent: "flex-end" }}>
+      {/* Next Button */}
+      <div className="flex justify-end mt-2.5">
         <button
-          className="next-btn"
+          className="btn-primary"
           onClick={handleNext}
           disabled={!isFormFilled}
         >
