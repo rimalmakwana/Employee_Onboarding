@@ -56,7 +56,7 @@ function Login() {
 
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center px-4 py-page-y">
-      <div className="w-full max-w-[500px]">
+      <div className="w-full max-w-small">
         <div className="card shadow-md">
           {/* Header */}
           <div className="mb-6">
