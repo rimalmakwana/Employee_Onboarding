@@ -1,3 +1,4 @@
+import { useCookies } from "react-cookie";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -7,6 +8,16 @@ import { ArrowRight, Loader2 } from "lucide-react";
 
 function Login() {
   const navigate = useNavigate();
+
+  // Cookies
+  const [cookies, setCookie, removeCookie] =
+    useCookies([
+      "access_token",
+      "refresh_token",
+      "expires_at",
+      "expires_in",
+      "token_type",
+    ]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -44,10 +55,61 @@ function Login() {
 
       console.log("Logged In User:", data);
 
+      // Session data
+      const session = data.session;
+
+      // Store cookies
+      setCookie(
+        "access_token",
+        session.access_token,
+        {
+          path: "/",
+          maxAge: 3600,
+        }
+      );
+
+      setCookie(
+        "refresh_token",
+        session.refresh_token,
+        {
+          path: "/",
+          maxAge: 3600,
+        }
+      );
+
+      setCookie(
+        "expires_at",
+        session.expires_at,
+        {
+          path: "/",
+          maxAge: 3600,
+        }
+      );
+
+      setCookie(
+        "expires_in",
+        session.expires_in,
+        {
+          path: "/",
+          maxAge: 3600,
+        }
+      );
+
+      setCookie(
+        "token_type",
+        session.token_type,
+        {
+          path: "/",
+          maxAge: 3600,
+        }
+      );
+
+      console.log("Cookies:", cookies);
+
       // Navigate after successful login
       navigate("/onboarding");
-      
-    } catch (err) {
+
+    } catch {
       setError("Something went wrong");
     } finally {
       setLoading(false);
@@ -56,11 +118,13 @@ function Login() {
 
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center px-4 py-page-y">
-      <div className="w-full max-w-small">
+      <div className="w-full max-w-125">
         <div className="card shadow-md">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="page-title">Welcome Back</h1>
+            <h1 className="page-title">
+              Welcome Back
+            </h1>
 
             <p className="page-subtitle">
               Login using your Supabase account
@@ -68,7 +132,10 @@ function Login() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form
+            onSubmit={handleLogin}
+            className="space-y-5"
+          >
             {/* Email */}
             <div>
               <label className="form-label">

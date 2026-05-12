@@ -96,6 +96,8 @@ const Onboarding = () => {
 
   // Otherwise show the normal onboarding form
   return (
+
+    
     <div className="max-w-[700px] mx-auto p-5 my-10">
       
       <h2 className="text-3xl font-bold mb-1 text-text-primary">Employee Onboarding</h2>

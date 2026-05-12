@@ -56,7 +56,7 @@ function Register() {
         email: "",
         password: "",
       });
-    } catch (err) {
+    } catch {
       setError("Something went wrong");
     } finally {
       setLoading(false);
@@ -65,7 +65,7 @@ function Register() {
 
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center px-4 py-page-y">
-      <div className="w-full max-w-small">
+      <div className="w-full max-w-125">
         {/* Card */}
         <div className="card shadow-md">
           {/* Header */}
