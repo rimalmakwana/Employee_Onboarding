@@ -4,20 +4,21 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { supabase } from "../lib/supabase";
 
+import TextInput from "../components/ui/TextInput";
+
 import { ArrowRight, Loader2 } from "lucide-react";
 
 function Login() {
   const navigate = useNavigate();
 
   // Cookies
-  const [cookies, setCookie, removeCookie] =
-    useCookies([
-      "access_token",
-      "refresh_token",
-      "expires_at",
-      "expires_in",
-      "token_type",
-    ]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "access_token",
+    "refresh_token",
+    "expires_at",
+    "expires_in",
+    "token_type",
+  ]);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -42,73 +43,57 @@ function Login() {
     setError("");
 
     try {
-      const { data, error } =
-        await supabase.auth.signInWithPassword({
-          email: formData.email,
-          password: formData.password,
-        });
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
 
       if (error) {
         setError(error.message);
         return;
       }
 
-      console.log("Logged In User:", data);
-
       // Session data
       const session = data.session;
 
       // Store cookies
-      setCookie(
-        "access_token",
-        session.access_token,
-        {
-          path: "/",
-          maxAge: 3600,
-        }
-      );
+      setCookie("access_token", session.access_token, {
+        path: "/",
+        maxAge: 3600,
+      });
 
-      setCookie(
-        "refresh_token",
-        session.refresh_token,
-        {
-          path: "/",
-          maxAge: 3600,
-        }
-      );
+      setCookie("user_email", data.user.email, {
+        path: "/",
+        maxAge: 3600,
+      });
 
-      setCookie(
-        "expires_at",
-        session.expires_at,
-        {
-          path: "/",
-          maxAge: 3600,
-        }
-      );
+      setCookie("refresh_token", session.refresh_token, {
+        path: "/",
+        maxAge: 3600,
+      });
 
-      setCookie(
-        "expires_in",
-        session.expires_in,
-        {
-          path: "/",
-          maxAge: 3600,
-        }
-      );
+      setCookie("expires_at", session.expires_at, {
+        path: "/",
+        maxAge: 3600,
+      });
 
-      setCookie(
-        "token_type",
-        session.token_type,
-        {
-          path: "/",
-          maxAge: 3600,
-        }
-      );
+      setCookie("expires_in", session.expires_in, {
+        path: "/",
+        maxAge: 3600,
+      });
 
-      console.log("Cookies:", cookies);
+      setCookie("token_type", session.token_type, {
+        path: "/",
+        maxAge: 3600,
+      });
+
+      setCookie("user_name", data.user.user_metadata.full_name, {
+        path: "/",
+        maxAge: 3600,
+      });
 
       // Navigate after successful login
       navigate("/onboarding");
-
     } catch {
       setError("Something went wrong");
     } finally {
@@ -122,9 +107,7 @@ function Login() {
         <div className="card shadow-md">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="page-title">
-              Welcome Back
-            </h1>
+            <h1 className="page-title">Welcome Back</h1>
 
             <p className="page-subtitle">
               Login using your Supabase account
@@ -132,64 +115,31 @@ function Login() {
           </div>
 
           {/* Form */}
-          <form
-            onSubmit={handleLogin}
-            className="space-y-5"
-          >
+          <form onSubmit={handleLogin} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="form-label">
-                Email Address
-              </label>
+              <label className="form-label">Email Address</label>
 
-              <input
+              <TextInput
                 type="email"
                 name="email"
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="
-                  w-full
-                  border border-border
-                  rounded-lg
-                  px-4 py-3
-                  text-sm
-                  bg-surface
-                  outline-none
-                  focus:ring-2
-                  focus:ring-primary-light
-                  focus:border-primary
-                  transition-all
-                "
                 required
               />
             </div>
 
             {/* Password */}
             <div>
-              <label className="form-label">
-                Password
-              </label>
+              <label className="form-label">Password</label>
 
-              <input
+              <TextInput
                 type="password"
                 name="password"
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
-                className="
-                  w-full
-                  border border-border
-                  rounded-lg
-                  px-4 py-3
-                  text-sm
-                  bg-surface
-                  outline-none
-                  focus:ring-2
-                  focus:ring-primary-light
-                  focus:border-primary
-                  transition-all
-                "
                 required
               />
             </div>
@@ -217,10 +167,7 @@ function Login() {
             >
               {loading ? (
                 <>
-                  <Loader2
-                    size={18}
-                    className="animate-spin"
-                  />
+                  <Loader2 size={18} className="animate-spin" />
                   Logging In...
                 </>
               ) : (

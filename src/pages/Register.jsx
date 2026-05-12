@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
+import TextInput from "../components/ui/TextInput";
 import { ArrowRight, Loader2 } from "lucide-react";
 
 function Register() {
@@ -32,7 +33,6 @@ function Register() {
       const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
-
         options: {
           data: {
             full_name: formData.fullName,
@@ -49,8 +49,6 @@ function Register() {
         "Registration successful. Please check your email for verification."
       );
 
-      console.log(data);
-
       setFormData({
         fullName: "",
         email: "",
@@ -66,12 +64,10 @@ function Register() {
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center px-4 py-page-y">
       <div className="w-full max-w-125">
-        {/* Card */}
         <div className="card shadow-md">
           {/* Header */}
           <div className="mb-6">
             <h1 className="page-title">Create Account</h1>
-
             <p className="page-subtitle">
               Register your account using Supabase authentication
             </p>
@@ -82,26 +78,12 @@ function Register() {
             {/* Full Name */}
             <div>
               <label className="form-label">Full Name</label>
-
-              <input
+              <TextInput
                 type="text"
                 name="fullName"
                 placeholder="Enter your full name"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="
-                  w-full
-                  border border-border
-                  rounded-lg
-                  px-4 py-3
-                  text-sm
-                  bg-surface
-                  outline-none
-                  focus:ring-2
-                  focus:ring-primary-light
-                  focus:border-primary
-                  transition-all
-                "
                 required
               />
             </div>
@@ -109,26 +91,12 @@ function Register() {
             {/* Email */}
             <div>
               <label className="form-label">Email Address</label>
-
-              <input
+              <TextInput
                 type="email"
                 name="email"
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="
-                  w-full
-                  border border-border
-                  rounded-lg
-                  px-4 py-3
-                  text-sm
-                  bg-surface
-                  outline-none
-                  focus:ring-2
-                  focus:ring-primary-light
-                  focus:border-primary
-                  transition-all
-                "
                 required
               />
             </div>
@@ -136,56 +104,26 @@ function Register() {
             {/* Password */}
             <div>
               <label className="form-label">Password</label>
-
-              <input
+              <TextInput
                 type="password"
                 name="password"
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
-                className="
-                  w-full
-                  border border-border
-                  rounded-lg
-                  px-4 py-3
-                  text-sm
-                  bg-surface
-                  outline-none
-                  focus:ring-2
-                  focus:ring-primary-light
-                  focus:border-primary
-                  transition-all
-                "
                 required
               />
             </div>
 
             {/* Success Message */}
             {message && (
-              <div
-                className="
-                  bg-success-light
-                  text-success
-                  px-4 py-3
-                  rounded-lg
-                  text-sm
-                "
-              >
+              <div className="bg-success-light text-success px-4 py-3 rounded-lg text-sm">
                 {message}
               </div>
             )}
 
             {/* Error Message */}
             {error && (
-              <div
-                className="
-                  bg-danger-light
-                  text-danger
-                  px-4 py-3
-                  rounded-lg
-                  text-sm
-                "
-              >
+              <div className="bg-danger-light text-danger px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
