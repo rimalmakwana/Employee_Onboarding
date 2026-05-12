@@ -1,15 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import './App.css'
-import Onboarding from './pages/Onboarding'
+import Register from "./pages/Register";
+import Onboarding from "./pages/Onboarding";
 
 function App() {
-
-
   return (
-    <>
-      <Onboarding/>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        {/* Register Page */}
+        <Route path="/" element={<Register />} />
+
+        {/* Onboarding Page */}
+        <Route path="/onboarding" element={<Onboarding />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
