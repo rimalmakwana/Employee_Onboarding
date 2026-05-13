@@ -64,6 +64,8 @@ function AddressInfo({ formData, handleChange, onNext, onBack }) {
   const onPlaceChanged = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
+
+    
       const addressComponents = place.address_components;
 
       if (!addressComponents) return;
