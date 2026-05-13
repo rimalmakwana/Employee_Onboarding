@@ -12,7 +12,7 @@ function Login() {
   const navigate = useNavigate();
 
   // Cookies
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [setCookie] = useCookies([
     "access_token",
     "refresh_token",
     "expires_at",
